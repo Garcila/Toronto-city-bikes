@@ -6,6 +6,8 @@ import './styles/map.css';
 
 const Stations = ({ text }) => <div className='station'>{text}</div>;
 
+const Me = ({ text }) => <div className='me'>{text}</div>;
+
 class Map extends Component {
   static defaultProps = {
     center: { lat: 43.6452, lng: -79.3806 },
@@ -16,7 +18,9 @@ class Map extends Component {
     super(props);
 
     this.state = {
-      stations: []
+      stations: [],
+      meLat: '',
+      meLng: ''
     };
   }
 
@@ -25,6 +29,16 @@ class Map extends Component {
     axios.get(url).then(result => {
       this.setState({ stations: result.data.data.stations });
     });
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          this.setState({ 
+            meLat: position.coords.latitude,
+            meLng: position.coords.longitude
+          });
+        }
+      )}
   }
 
   render() {
@@ -37,13 +51,17 @@ class Map extends Component {
           text={s.capacity}
         />
       );
-    });
+    });        
+
+    const center = { lat: this.state.meLat, lng: this.state.meLng };
+
     return (
       <div className="google-map">
         <GoogleMapReact
-          defaultCenter={this.props.center}
+          defaultCenter={center}
           defaultZoom={this.props.zoom}
         >
+          <Me lat={this.state.meLat} lng={this.state.meLng} text='ME' />
           {stations}
         </GoogleMapReact>
       </div>
