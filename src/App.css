@@ -8,7 +8,7 @@ HTML {
 
 .App {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(50px 1000px) auto;
     grid-template-rows: 1fr;
     grid-template-areas: 'header map';
     align-items: stretch;
@@ -17,11 +17,12 @@ HTML {
 
 .App-logo {
     filter: brightness(10);
-    height: 4rem;
+    height: 2rem;
     padding: 3rem;
 }
 
 .App-header {
+    font-family: 'Montserrat', sans-serif;
     grid-area: header;
     background-color: #296533;
     padding: 0.5rem;

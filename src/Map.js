@@ -16,20 +16,20 @@ class Map extends Component {
 
   constructor(props) {
     super(props);
-
+    
     this.state = {
       stations: [],
       meLat: '',
       meLng: ''
     };
   }
-
+  
   componentDidMount() {
     const url = `https://tor.publicbikesystem.net/ube/gbfs/v1/en/station_information`;
     axios.get(url).then(result => {
       this.setState({ stations: result.data.data.stations });
     });
-
+    
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
@@ -39,28 +39,30 @@ class Map extends Component {
           });
         }
       )}
-  }
-
-  render() {
-    const stations = this.state.stations.map(s => {
-      return (
-        <Stations
+    }
+    
+    render() {
+      const stations = this.state.stations.map(s => {
+        return (
+          <Stations
           key={s.station_id}
           lat={s.lat}
           lng={s.lon}
           text={s.capacity}
-        />
-      );
-    });        
-
-    const center = { lat: this.state.meLat, lng: this.state.meLng };
-
-    return (
-      <div className="google-map">
+          />
+        );
+      });        
+      
+      const meCenter = [this.state.meLat,this.state.meLng ];
+      
+      return (
+        <div className="google-map">
         <GoogleMapReact
-          defaultCenter={center}
+          defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
-        >
+          center={meCenter}
+          zoom={17}
+          >
           <Me lat={this.state.meLat} lng={this.state.meLng} text='ME' />
           {stations}
         </GoogleMapReact>
