@@ -1,5 +1,5 @@
 .google-map {
-    width: 100rem;
+    width: 100%;
     height: 100vh;
 }
 
@@ -8,13 +8,25 @@
     justify-content: center;
     align-items: center;
     font-size: 1rem;
-    min-width: 1.5rem;
-    min-height: 1.5rem;
-    border: 2px solid #226525;
+    min-width: 2.8rem;
+    min-height: 2.8rem;
+    border: 2px solid #426233;
     border-radius: 50%;
     background-color: #3caa3c;
     color: #fff;
     font-weight: bold;
+}
+
+.station:hover {
+    cursor: pointer;
+    border: 2px solid #3caa3c;
+    color: #426233;
+    background-color: #fff;
+    margin-left: -0.45rem;
+    margin-top: -0.4rem;
+    min-width: 3.5rem;
+    min-height: 3.5rem;
+    transition: ease-in-out 0.3s;
 }
 
 .me {
@@ -22,11 +34,23 @@
     justify-content: center;
     align-items: center;
     font-size: 1rem;
-    min-width: 1.8rem;
-    min-height: 1.8rem;
+    min-width: 2.8rem;
+    min-height: 2.8rem;
     border: 2px solid #ff0000;
     border-radius: 50%;
     background-color: #c22a2a;
     color: #fff;
     font-weight: bold;
+}
+
+.me:hover {
+    cursor: pointer;
+    border: 2px solid #c22a2a;
+    color: #fff;
+    background-color: #ff0000;
+    margin-left: -0.45rem;
+    margin-top: -0.4rem;
+    min-width: 3.5rem;
+    min-height: 3.5rem;
+    transition: ease-in-out 0.3s;
 }

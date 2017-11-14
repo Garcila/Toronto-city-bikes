@@ -8,10 +8,9 @@ HTML {
 
 .App {
     display: grid;
-    grid-template-columns: minmax(50px 1000px) auto;
+    grid-template-columns: minmax(50px, 100px) auto;
     grid-template-rows: 1fr;
     grid-template-areas: 'header map';
-    align-items: stretch;
     text-align: center;
 }
 

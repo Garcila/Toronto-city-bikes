@@ -1,4 +1,4 @@
-[{
+export const mapStyle = [{
         "elementType": "geometry",
         "stylers": [{
             "color": "#f5f5f5"
